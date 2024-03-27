@@ -14,7 +14,7 @@
 // Execute `rustlings hint hashmaps2` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+
 
 use std::collections::HashMap;
 
@@ -40,6 +40,19 @@ fn fruit_basket(basket: &mut HashMap<Fruit, u32>) {
         // TODO: Insert new fruits if they are not already present in the
         // basket. Note that you are not allowed to put any type of fruit that's
         // already present!
+        basket.entry(fruit).or_insert(10);
+
+        // if  !basket.contains_key(&fruit) {
+        //     basket.insert(fruit, 10);
+        // }
+
+        //basket.insert(fruit, 10) 在 match 语句的 None 分支中被调用。
+        // 这个调用试图改变 basket 的状态，但是 basket.get(&fruit) 已经借用了 basket，
+        // 所以你不能在同一时间内既借用又改变 basket
+        // match basket.get(&fruit) {
+        //     Some(_) => {},
+        //     None => basket.insert(fruit, 10),
+        // }
     }
 }
 
